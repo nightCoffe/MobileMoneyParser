@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ListView;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -11,12 +12,17 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private Document doc;
     private Runnable runnable;
     private Thread secThread;
+    private ListView listView;
+    private CustomArrayAdapter customArrayAdapter;
+    private List<ListItemClass> arrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
+        listView = findViewById(R.id.listView);
+        arrayList = new ArrayList<>();
+        customArrayAdapter = new CustomArrayAdapter(this, R.layout.list_item_1, arrayList, getLayoutInflater());
+        listView.setAdapter(customArrayAdapter);
         runnable = new Runnable() {
             @Override
             public void run() {
@@ -34,6 +44,17 @@ public class MainActivity extends AppCompatActivity {
         };
         secThread = new Thread(runnable);
         secThread.start();
+        ListItemClass items = new ListItemClass();
+        items.setData_1("Dollar");
+        items.setData_2("72");
+        items.setData_3("77");
+        arrayList.add(items);
+        items = new ListItemClass();
+        items.setData_1("Euro");
+        items.setData_2("79");
+        items.setData_3("84");
+        arrayList.add(items);
+        customArrayAdapter.notifyDataSetChanged();
     }
 
     private void getWeb() {
