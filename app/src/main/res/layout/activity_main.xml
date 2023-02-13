@@ -10,7 +10,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Курс валют"
+        android:text="Курс валют ЦБ"
         android:textColor="#100F0F"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
