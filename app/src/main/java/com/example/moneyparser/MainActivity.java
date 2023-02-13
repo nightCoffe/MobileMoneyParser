@@ -44,17 +44,6 @@ public class MainActivity extends AppCompatActivity {
         };
         secThread = new Thread(runnable);
         secThread.start();
-//        ListItemClass items = new ListItemClass();
-//        items.setData_1("Dollar");
-//        items.setData_2("72");
-//        items.setData_3("77");
-//        arrayList.add(items);
-//        items = new ListItemClass();
-//        items.setData_1("Euro");
-//        items.setData_2("79");
-//        items.setData_3("84");
-//        arrayList.add(items);
-//        customArrayAdapter.notifyDataSetChanged();
     }
 
     private void getWeb() {
@@ -63,8 +52,6 @@ public class MainActivity extends AppCompatActivity {
             Elements tables = doc.getElementsByTag("tbody");
             Element moneyTable = tables.get(0);
             Elements moneyRang = moneyTable.children();
-//            Log.d("MyLog", "Tbody Size " + moneyRang.get(0).text());
-//            Log.d("MyLog", "TextSite: " + doc.text());
             Log.d("MyLog", "TextSite: " + tables.get(0).text());
             for (int i = 0; i < moneyTable.childrenSize(); i++) {
                 ListItemClass items = new ListItemClass();
